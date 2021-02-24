@@ -5,19 +5,30 @@ from .models import Users
 from .serializers import *
 
 
-class UserView(APIView):
+class UsersView(APIView):
 
     serializer_class = UsersSerializer
 
     def get(self, request):
-        detail = [{'name': detail.name, 'email': detail.email,
-                   'text': detail.text, 'createAt': detail.createAt}
-                  for detail in Users.objects.all()]
-        return Response(detail)
+        data = Users.objects.all()
+        serializer = UsersSerializer(data, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
-
         serializer = UsersSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+
+class UserView(APIView):
+
+    def get(self, request, pk):
+        data = Users.objects.filter(pk=pk)
+        serializer = UsersSerializer(data, many=True)
+        return Response(serializer.data)
+
+    def delete(self, request, pk):
+        data = Users.objects.filter(pk=pk)
+        data.delete()
+        return Response("Commen removed successfully")
