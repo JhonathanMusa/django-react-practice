@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { useParams } from "react-router-dom";
 
 export default function Insert(props) {
   const [comments, setComments] = useState([]);
 
-  const { id } = useParams();
+  const { id } = props.match.params;
 
   useEffect(() => {
     Axios.get(`http://localhost:8000/api/user/${id}`)
@@ -28,9 +27,11 @@ export default function Insert(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Axios.delete(`http://localhost:8000/api/delete/${id}`).then((res) =>
-      console.log(res.data)
-    );
+    Axios.delete(`http://localhost:8000/api/delete/${id}`, comments)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
 
     props.history.push("/list");
   };
