@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    textAlign: "center",
   },
 });
 
@@ -36,19 +37,19 @@ export default function List() {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Text</TableCell>
-            <TableCell>Created At</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">Text</TableCell>
+            <TableCell align="center">Created At</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {users.map((detail, id) => (
             <TableRow key={id}>
-              <TableCell>{detail.name}</TableCell>
-              <TableCell>{detail.email}</TableCell>
-              <TableCell>{detail.text}</TableCell>
-              <TableCell>{detail.createAt}</TableCell>
+              <TableCell align="center">{detail.name}</TableCell>
+              <TableCell align="center">{detail.email}</TableCell>
+              <TableCell align="center">{detail.text}</TableCell>
+              <TableCell align="center">{detail.createAt}</TableCell>
             </TableRow>
           ))}
         </TableBody>

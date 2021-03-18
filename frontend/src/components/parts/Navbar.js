@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import Home from "../views/Home";
 import Insert from "../views/Insert";
 import List from "../views/List";
 import Delete from "../views/Delete";
@@ -9,14 +8,11 @@ export default function Navbar() {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
-              Home
-            </Link>
             <div className="collapse navbar-collapse">
               <div className="navbar-nav">
-                <Link className="nav-link " aria-current="page" to="/list">
+                <Link className="nav-link " aria-current="page" to="/">
                   List
                 </Link>
                 <Link className="nav-link " aria-current="page" to="/insert">
@@ -27,8 +23,8 @@ export default function Navbar() {
           </div>
         </nav>
 
-        <Route path="/" exact component={Home} />
-        <Route path="/list" component={List} />
+
+        <Route path="/" exact component={List} />
         <Route path="/insert" component={Insert} />
         <Route path="/delete/:id" component={Delete} />
       </div>
