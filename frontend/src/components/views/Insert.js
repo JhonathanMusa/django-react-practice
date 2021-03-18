@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Insert(props) {
-  const [comments, setComments] = useState({
-    name: "",
-    email: "",
-    text: "",
-  });
+  const [comments, setComments] = useState([]);
 
   const handleInput = (e) => {
     setComments({
@@ -19,7 +15,7 @@ export default function Insert(props) {
     e.preventDefault();
     const fetch = async () => {
       try {
-        const { data } = await Axios.post("http://localhost:8000/users/", {
+        const { data } = await Axios.post("http://localhost:8000/api/users/", {
           name: comments.name,
           email: comments.email,
           text: comments.text,

@@ -21,7 +21,7 @@ class UsersView(APIView):
             return Response(serializer.data)
 
 
-class UserView(APIView):
+""" class UserView(APIView):
 
     def get(self, request, pk):
         data = Users.objects.filter(pk=pk)
@@ -31,4 +31,4 @@ class UserView(APIView):
     def delete(self, request, pk):
         data = Users.objects.filter(pk=pk)
         data.delete()
-        return Response("Commen removed successfully")
+        return Response("Commen removed successfully") """
