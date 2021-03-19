@@ -33,27 +33,42 @@ export default function List() {
   }, []);
 
   return (
-    <TableContainer>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Text</TableCell>
-            <TableCell align="center">Created At</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((detail, id) => (
-            <TableRow key={id}>
-              <TableCell align="center">{detail.name}</TableCell>
-              <TableCell align="center">{detail.email}</TableCell>
-              <TableCell align="center">{detail.text}</TableCell>
-              <TableCell align="center">{detail.createAt}</TableCell>
+    <div>
+      <div className="jumbotron jumbotron-fluid text-center bg-white">
+        <div className="container">
+          <h1 className="display-4">Blog Application</h1>
+          <p className="lead">
+            Insert text and see what the people say
+          </p>
+        </div>
+      </div>
+
+      <TableContainer>
+        <Table
+          className={classes.table}
+          size="small"
+          aria-label="a dense table"
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Email</TableCell>
+              <TableCell align="center">Text</TableCell>
+              <TableCell align="center">Created At</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {users.map((detail, id) => (
+              <TableRow key={id}>
+                <TableCell align="center">{detail.name}</TableCell>
+                <TableCell align="center">{detail.email}</TableCell>
+                <TableCell align="center">{detail.text}</TableCell>
+                <TableCell align="center">{detail.createAt}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
