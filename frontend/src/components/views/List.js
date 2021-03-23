@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import Button from "@material-ui/core/Button"
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -55,6 +56,7 @@ export default function List() {
               <TableCell align="center">Email</TableCell>
               <TableCell align="center">Text</TableCell>
               <TableCell align="center">Created At</TableCell>
+              <TableCell align="center">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -64,6 +66,9 @@ export default function List() {
                 <TableCell align="center">{detail.email}</TableCell>
                 <TableCell align="center">{detail.text}</TableCell>
                 <TableCell align="center">{detail.createAt}</TableCell>
+                <TableCell align="center">
+                  <Button variant="contained" color="secondary">Delete</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

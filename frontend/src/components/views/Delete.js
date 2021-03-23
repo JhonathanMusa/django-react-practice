@@ -7,14 +7,18 @@ export default function Insert(props) {
   const { id } = props.match.params;
 
   useEffect(() => {
-    Axios.get(`http://localhost:8000/api/user/${id}`)
-      .then((response) => {
-        setComments(response.data);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const fetch = async () => {
+      try {
+        const { data } = await Axios.get(
+          `http://localhost:8000/api/user/${id}`
+        );
+        setComments(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetch();
   }, [setComments, id]);
 
   const handleInput = (e) => {
@@ -27,11 +31,18 @@ export default function Insert(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Axios.delete(`http://localhost:8000/api/delete/${id}`, comments)
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        console.log(err);
-      });
+    const deleteData = async () => {
+      try {
+        const { data } = await Axios.delete(
+          `http://localhost:8000/api/delete/${id}`,
+          comments
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteData();
 
     props.history.push("/list");
   };
