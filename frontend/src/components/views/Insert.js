@@ -16,9 +16,9 @@ export default function Insert(props) {
     const fetch = async () => {
       try {
         const { data } = await Axios.post("http://localhost:8000/api/users/", {
-          name: comments.name,
-          email: comments.email,
-          text: comments.text,
+          // name: comments.name,
+          // email: comments.email,
+          task: comments.task,
         });
         console.log(data);
       } catch (error) {
@@ -32,7 +32,7 @@ export default function Insert(props) {
   return (
     <div className=" container mt-5">
       <form onSubmit={handleSubmit}>
-        <div className="input-group-prepend mb-3">
+        {/*    <div className="input-group-prepend mb-3">
           <span className="input-group-text bg-dark" id="basic-addon1">
             Name
           </span>
@@ -53,7 +53,7 @@ export default function Insert(props) {
             name="email"
             onChange={handleInput}
           />
-        </div>
+        </div> */}
 
         <div className="input-group mb-3">
           <div className="input-group-prepend">
@@ -62,7 +62,7 @@ export default function Insert(props) {
           <textarea
             className="form-control "
             aria-label="With textarea"
-            name="text"
+            name="task"
             onChange={handleInput}
           ></textarea>
         </div>

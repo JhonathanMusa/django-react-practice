@@ -10,7 +10,7 @@ export default function Insert(props) {
     const fetch = async () => {
       try {
         const { data } = await Axios.get(
-          `http://localhost:8000/api/user/${id}`
+          `http://localhost:8000/api/delete/${id}/`
         );
         setComments(data);
         console.log(data);
@@ -44,44 +44,20 @@ export default function Insert(props) {
     };
     deleteData();
 
-    props.history.push("/list");
+    props.history.push("/");
   };
 
   return (
     <div className=" container mt-5">
       <form onSubmit={handleSubmit}>
-        {comments.map((detail) => (
-          <div key={detail.pk}>
-            <div className="input-group-prepend mb-3">
-              <span className="input-group-text bg-dark" id="basic-addon1">
-                Name
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                onChange={handleInput}
-                value={detail.name}
-              />
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text bg-dark">Text</span>
-              </div>
-              <textarea
-                className="form-control "
-                aria-label="With textarea"
-                name="text"
-                onChange={handleInput}
-                value={detail.text}
-              ></textarea>
-            </div>
+        <input
+          className="input-group"
+          type="text"
+          onChange={handleInput}
+          value={comments.task}
+        />
 
-            <button type="submit" className="btn btn-dark mb-5 btn-block">
-              Delete
-            </button>
-          </div>
-        ))}
+        <button className="btn btn-primary">Delete</button>
       </form>
     </div>
   );
