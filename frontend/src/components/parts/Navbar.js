@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Insert from "../views/Insert";
 import List from "../views/List";
 import Delete from "../views/Delete";
+import Update from "../views/Update";
 
 export default function Navbar() {
   return (
@@ -23,10 +24,10 @@ export default function Navbar() {
           </div>
         </nav>
 
-
         <Route path="/" exact component={List} />
         <Route path="/insert" component={Insert} />
         <Route path="/delete/:id" component={Delete} />
+        <Route path="/update/:id" component={Update} />
       </div>
     </Router>
   );

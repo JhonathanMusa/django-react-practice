@@ -44,6 +44,9 @@ export default function List() {
                 <Link to={"/delete/" + user.id}>
                   <button>Delete</button>
                 </Link>
+                <Link to={"/update/" + user.id}>
+                  <button>Update</button>
+                </Link>
               </td>
             </tr>
           ))}

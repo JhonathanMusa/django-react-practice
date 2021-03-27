@@ -23,5 +23,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from users import views
 urlpatterns = [
     path("users/", views.UsersView.as_view()),
-    path("delete/<int:pk>/", views.UsersDetail.as_view())
+    path("delete/<int:pk>/", views.UsersDetail.as_view()),
+    path("update/<int:pk>/", views.UsersDetail.as_view())
 ]

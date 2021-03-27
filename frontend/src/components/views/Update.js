@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import React, { useEffect, useState } from "react";
 
-export default function Insert(props) {
+export default function Update(props) {
   const [comments, setComments] = useState([]);
 
   const { id } = props.match.params;
@@ -10,16 +10,17 @@ export default function Insert(props) {
     const fetch = async () => {
       try {
         const { data } = await Axios.get(
-          `http://localhost:8000/api/delete/${id}/`
+          `http://localhost:8000/api/users/${id}`
         );
         setComments(data);
         console.log(data);
-      } catch (error) { 
+      } catch (error) {
         console.log(error);
       }
     };
+
     fetch();
-  }, [setComments, id]);
+  }, [id]);
 
   const handleInput = (e) => {
     setComments({
@@ -31,18 +32,17 @@ export default function Insert(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const deleteData = async () => {
+    const updateTask = async () => {
       try {
-        const { data } = await Axios.delete(
-          `http://localhost:8000/api/delete/${id}`,
-          comments
+        const { data } = await Axios.put(
+          `http://localhost:8000/api/update/${id}`
         );
         console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
-    deleteData();
+    updateTask();
 
     props.history.push("/");
   };
@@ -55,6 +55,7 @@ export default function Insert(props) {
           type="text"
           onChange={handleInput}
           value={comments.task}
+          name="task"
         />
 
         <button className="btn btn-primary">Delete</button>
