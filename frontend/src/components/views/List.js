@@ -42,10 +42,10 @@ export default function List() {
               <td>{user.created_at}</td>
               <td>
                 <Link to={"/delete/" + user.id}>
-                  <button>Delete</button>
+                  <button className="btn btn-danger">Delete</button>
                 </Link>
                 <Link to={"/update/" + user.id}>
-                  <button>Update</button>
+                  <button className="btn  btn-warning">Update</button>
                 </Link>
               </td>
             </tr>
